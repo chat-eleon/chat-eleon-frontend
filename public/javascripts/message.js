@@ -2,15 +2,19 @@ $('#btn-send').click(() => {
   const text = $('#text').val();
   $.post('http://localhost:3000/api/messages',{text:text,user:1,grup:1},(data,status) => {
     if (status == 'success') {
-      console.log(data);
+      $('#text').val('');
+      $('#text').focus();
       $('#list-message').prepend(`
         <li class="collection-item avatar message-${data.data._id}">
          <img src="http://webiconspng.com/wp-content/uploads/2016/11/avatar_male_man_mature_old_person_user_icon_628284.png" alt="" class="circle">
          <span class="title">${data.data.user}</span>
          <p class="text-message-${data.data._id}">${data.data.text}</p>
+         <input type="text" class="update-text-${data.data._id}" value="${data.data.text}" style="display:none">
          <div class="secondary-content">
            <button class="btn-floating btn-large waves-effect waves-light red btn-delete btn-delete-${data.data._id}" onclick="deleteMessage('${data.data._id}')" data-id="${data.data._id}" ><i class="material-icons">delete</i></button>
            <button class="btn-floating btn-large waves-effect waves-light red btn-update btn-update-${data.data._id}" data-id="${data.data._id}" onclick="updateMessage('${data.data._id}')" ><i class="material-icons">edit</i></button>
+           <button class="btn-floating btn-large waves-effect waves-light red btn-delete btn-cancel-${data.data._id}" onclick="cancelUpdateMessage('${data.data._id}')" data-id="${data.data._id}" style="display:none" ><i class="material-icons">cancel</i></button>
+           <button class="btn-floating btn-large waves-effect waves-light red btn-update btn-update-send-${data.data._id}" data-id="${data.data._id}" onclick="sendUpdateMessage('${data.data._id}')"style="display:none" ><i class="material-icons">send</i></button>
          </div>
        </li >
       `);
