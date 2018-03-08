@@ -1,0 +1,29 @@
+<%- include ../partials/header %>
+<%- include ../partials/navbar %>
+
+<div class="container" style="margin-top: 10px">
+  <h3>Group Name</h3>
+  <h6>Default Language</h6>
+  <br><br>
+  <div class="row">
+    <div class="input-field col s6">
+      <input  id="text" type="text" class="validate">
+      <label class="active" for="text">Chat Text</label>
+    </div>
+    <div class="input-field col s6">
+      <button type="button" name="button" id="btn-send" class="waves-effect waves-light btn red">Send</button>
+    </div>
+  </div>
+  <%# End Form %>
+
+  <ul class="collection" id="list-message">
+  </ul>
+</div>
+
+<script src="/javascripts/message.js">
+
+</script>
+<script type="text/javascript">
+  
+</script>
+<%- include ../partials/footer %>
