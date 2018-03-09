@@ -6,24 +6,36 @@
   <h6>Default Language</h6>
   <br><br>
   <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s3">
       <input  id="text" type="text" class="validate">
-      <label class="active" for="text">Chat Text</label>
+      <label class="active" for="text">Chat</label>
     </div>
-    <div class="input-field col s6">
+    <div class="input-field col s3">
       <button type="button" name="button" id="btn-send" class="waves-effect waves-light btn red">Send</button>
+    </div>
+    <div class="input-field col s3">
+      <input  id="text-search" type="text" class="validate">
+      <label class="active" for="text">Search Info</label>
+    </div>
+    <div class="input-field col s3">
+      <button type="button" name="button" id="btn-search" class="waves-effect waves-light btn red">Search</button>
     </div>
   </div>
   <%# End Form %>
-
+  <div class="row">
+    <div class="col s6">
+      <ul class="collection" id="list-search">
+      </ul>
+    </div>
+    <div class="col s6">
+      <ul class="collection" id="list-stack">
+      </ul>
+    </div>
+  </div>
   <ul class="collection" id="list-message">
   </ul>
 </div>
 
 <script src="/javascripts/message.js">
-
-</script>
-<script type="text/javascript">
-  
 </script>
 <%- include ../partials/footer %>
