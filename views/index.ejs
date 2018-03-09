@@ -1,3 +1,87 @@
 <%- include ./partials/header %>
 <%- include ./partials/navbar %>
-<%- include ./partials/footer %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Chat-Eleon</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<%- include ./partials/fb %>
+<body>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="col">
+      <div class="container s4">
+        <br><br>
+      <div class="chat-eleon">
+        <h1>Chat-Eleon</h1>
+      </div>
+      <div class="row center">
+        <h5 class="header center white-text">Join The New Chat Experience</h5>
+      </div>
+    <div class="row-fb">
+        <div class="row center">
+          <fb:login-button class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" style="display:block">
+            Login
+          </fb:login-button>
+        <button type="button" name="button" class="fb-logout-button" onclick="logout()" style="display:">
+            logout
+        </button>
+      </div>
+    </div> 
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="picture/chameleon6.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">accessibility</i></h2>
+            <h5 class="center">Auto-translate your chat</h5>
+
+            <p class="light">Your chat will be converted into the group language, EVEN if you are using alien language (1st API-Auto Translate)</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">access_time</i></h2>
+            <h5 class="center">You can search information while chatting</h5>
+
+            <p class="light">You can search information while accessing group chat(API-2nd Google Search)</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">accessible</i></h2>
+            <h5 class="center">enjoy new way of chatting</h5>
+            <p class="light">try this new chat now</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
+<%- include ./home/footer-home %>
