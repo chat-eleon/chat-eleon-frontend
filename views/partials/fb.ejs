@@ -21,7 +21,10 @@
           console.log(response)
           if (response.data) {
             console.log('Successful login for: ' + response.data.fbData.name);
-            localStorage.setItem('token', response.data.token)
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('userID', response.data.userData._id);
+            // localStorage.setItem('profile_pic_URL', response.data.fbData.picture.data.url);
+            // console.log(localStorage.profile_pic_URL);
             // console.log($('#user-welcome').text());
             $('#user-welcome').text(`Welcome, ${response.data.fbData.name}`)
           }
@@ -108,6 +111,7 @@
   function logout(){
     FB.logout((response)=>{
       localStorage.removeItem('token')
+      localStorage.removeItem('userID');
       statusChangeCallback(response)
       location.reload()
     })
