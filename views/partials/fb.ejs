@@ -21,6 +21,7 @@
           console.log(response)
           if (response.data) {
             console.log('Successful login for: ' + response.data.fbData.name);
+
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('userID', response.data.userData._id);
             localStorage.setItem('userName', response.data.userData.userName);
@@ -28,6 +29,7 @@
             // console.log(localStorage.profile_pic_URL);
             // console.log($('#user-welcome').text());
             $('#user-welcome').text(`Welcome, ${localStorage.getItem('userName')}`)
+
           }
         })
         .catch((error) => {
@@ -42,7 +44,7 @@
       $('.fb-logout-button').hide();
       $('#group-menu').hide();
       localStorage.removeItem('token');
-      // console.log(localStorage.token);
+
     }
   }
 

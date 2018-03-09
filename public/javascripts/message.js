@@ -48,6 +48,7 @@ $('#btn-send').click(() => {
   url = url.split('/');
   var id = url[url.length - 1];
   const language = $('#language-value').val();
+
   const userID = localStorage.getItem('userID');
 
   $.post('http://localhost:3000/api/messages',{text:text,user:userID,grup:id,language: language},(data,status) => {
