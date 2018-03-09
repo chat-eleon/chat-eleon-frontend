@@ -11,28 +11,10 @@
       $('.fb-login-button').hide()
       $('.fb-logout-button').show()
       const token = response.authResponse.accessToken;
-      // $.post('http://localhost:3000/api/facebook',{token : token},
-      //   function(data,status) {
-      //     console.log('Welcome!  Fetching your information.... ');
-      //     if (status == 'success') {
-      //       console.log('Successful login for: ' + data.fbData.name);
-      //       // console.log(data);
-      //
-      //       localStorage.setItem('token', data.token)
-      //       console.log(localStorage.token);
-      //       // console.log(localStorage.token);
-      //       $('.fb-login-button').hide()
-      //       $('.fb-logout-button').show()
-      //       // $('#login-text').text(`Welcome, ${data.fbData.name}`)
-      //     } else {
-      //       console.log(status);
-      //       // $('.fb-login-button').show()
-      //       // $('.fb-logout-button').hide()
-      //     }
-      // })
+      
 
       // axios
-      axios.post('http://localhost:3000/api/facebook', {token:token})
+      axios.post('http://localhost:3000/fb-api/facebook', {token:token})
         .then((response) => {
           console.log('==============$$$$$$$$$$$$$$$');
           console.log(response)
