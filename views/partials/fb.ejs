@@ -27,6 +27,7 @@
             // console.log(localStorage.profile_pic_URL);
             // console.log($('#user-welcome').text());
             $('#user-welcome').text(`Welcome, ${response.data.fbData.name}`)
+            console.log(localStorage)
           }
         })
         .catch((error) => {
