@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -7,27 +8,43 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       // testAPI();
-
+      $('.fb-login-button').hide()
+      $('.fb-logout-button').show()
       const token = response.authResponse.accessToken;
-      $.post('http://localhost:3000/api/facebook',{token : token},
-        function(data,status) {
-          console.log('Welcome!  Fetching your information.... ');
-          if (status == 'success') {
-            console.log('Successful login for: ' + data.fbData.name);
-            // console.log(data);
+      // $.post('http://localhost:3000/api/facebook',{token : token},
+      //   function(data,status) {
+      //     console.log('Welcome!  Fetching your information.... ');
+      //     if (status == 'success') {
+      //       console.log('Successful login for: ' + data.fbData.name);
+      //       // console.log(data);
+      //
+      //       localStorage.setItem('token', data.token)
+      //       console.log(localStorage.token);
+      //       // console.log(localStorage.token);
+      //       $('.fb-login-button').hide()
+      //       $('.fb-logout-button').show()
+      //       // $('#login-text').text(`Welcome, ${data.fbData.name}`)
+      //     } else {
+      //       console.log(status);
+      //       // $('.fb-login-button').show()
+      //       // $('.fb-logout-button').hide()
+      //     }
+      // })
 
-            localStorage.setItem('token', data.token)
-            console.log(localStorage.token);
-            // console.log(localStorage.token);
-            $('.fb-login-button').hide()
-            $('.fb-logout-button').show()
-            // $('#login-text').text(`Welcome, ${data.fbData.name}`)
-          } else {
-            console.log(status);
-            // $('.fb-login-button').show()
-            // $('.fb-logout-button').hide()
+      // axios
+      axios.post('http://localhost:3000/api/facebook', {token:token})
+        .then((response) => {
+          console.log('==============$$$$$$$$$$$$$$$');
+          console.log(response)
+          if (response.data) {
+            console.log('Successful login for: ' + response.data.fbData.name);
+            localStorage.setItem('token', response.data.token)
+
           }
-      })
+        })
+        .catch((error) => {
+          console.log(error);
+        })
 
     } else {
       // The person is not logged into your app or we are unable to tell.
@@ -83,9 +100,6 @@
     js = d.createElement(s); js.id = id;
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
   }(document, 'script', 'facebook-jssdk'));
 
   // Here we run a very simple test of the Graph API after login is
@@ -102,8 +116,9 @@
 
   function logout(){
     FB.logout((response)=>{
-      location.reload()
       localStorage.removeItem('token')
+      statusChangeCallback(response)
+      location.reload()
     })
   }
 
