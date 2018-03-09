@@ -1,0 +1,8 @@
+<script>
+    let key = localStorage.getItem('token')
+    if(key == undefined || key == null){
+        window.location.href = '/'
+    }else{
+        $('#user-welcome').text(`Welcome, ${localStorage.getItem('userName')}`)
+    }
+</script>

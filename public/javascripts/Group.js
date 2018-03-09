@@ -1,7 +1,8 @@
 $('#create-group').click(()=>{
     let input = {
         title : $('#group').val(),
-        language: $('#language').val()
+        language: $('#language').val(),
+        userid : localStorage.getItem('userID')
     }
     $.ajax({
         method : "POST",
