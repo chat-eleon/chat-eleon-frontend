@@ -1,6 +1,10 @@
 $('#btn-send').click(() => {
   const text = $('#text').val();
-  $.post('http://localhost:3000/api/messages',{text:text,user:1,grup:1},(data,status) => {
+  var url = document.URL;
+  url = url.split('/');
+  var id = url[url.length - 1];
+  const language = $('#language-value').val();
+  $.post('http://localhost:3000/api/messages',{text:text,user:1,grup:id,language: language},(data,status) => {
     if (status == 'success') {
       $('#text').val('');
       $('#text').focus();
@@ -89,6 +93,17 @@ $(document).ready(() => {
       })
     }
   });
+  $.get('http://localhost:3000/api/groups',(data,status) => {
+    if (status == 'success') {
+      data.forEach((data) => {
+        if (data._id == id) {
+          $('#group-title').text(data.title);
+          $('#default-language').text(`Default Language: ${data.language}`);
+          $('#language-value').val(data.language);
+        }
+      })
+    }
+  })
 });
 function deleteMessage(id){
   $.ajax({
@@ -126,14 +141,17 @@ function cancelUpdateMessage(id){
 function sendUpdateMessage(id){
   console.log('updateeee');
   let newText =$(`.update-text-${id}`).val();
+  const language = $('#language-value').val();
+
   $.ajax({
     url: 'http://localhost:3000/api/messages/'+id,
     type: 'PUT',
     data: {
       text: newText ,
+      language: language
     },
     success: function(result) {
-      $(`.text-message-${id}`).text(newText);
+      $(`.text-message-${id}`).text(result.data.text);
       cancelUpdateMessage(id);
     }
   });
