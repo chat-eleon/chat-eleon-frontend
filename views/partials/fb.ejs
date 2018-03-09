@@ -10,8 +10,9 @@
       // testAPI();
       $('.fb-login-button').hide()
       $('.fb-logout-button').show()
+      $('#group-menu').show()
       const token = response.authResponse.accessToken;
-      
+
 
       // axios
       axios.post('http://localhost:3000/fb-api/facebook', {token:token})
@@ -21,7 +22,8 @@
           if (response.data) {
             console.log('Successful login for: ' + response.data.fbData.name);
             localStorage.setItem('token', response.data.token)
-
+            // console.log($('#user-welcome').text());
+            $('#user-welcome').text(`Welcome, ${response.data.fbData.name}`)
           }
         })
         .catch((error) => {
@@ -32,9 +34,10 @@
       // The person is not logged into your app or we are unable to tell.
       // document.getElementById('status').innerHTML = 'Please log ' +
       //   'into this app.';
-      $('.fb-login-button').show()
-      $('.fb-logout-button').hide()
-      localStorage.removeItem('token')
+      $('.fb-login-button').show();
+      $('.fb-logout-button').hide();
+      $('#group-menu').hide();
+      localStorage.removeItem('token');
       console.log(localStorage.token);
     }
   }
@@ -94,6 +97,12 @@
   //     document.getElementById('status').innerHTML =
   //       'Thanks for logging in, ' + response.name + '!';
   //   });
+  // }
+
+  // function login () {
+  //   FB.login((response)=>{
+  //     statusChangeCallback(response)
+  //   }, {scope:'public_profile,email'})
   // }
 
   function logout(){
