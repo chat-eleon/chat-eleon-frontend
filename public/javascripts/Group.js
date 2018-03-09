@@ -22,9 +22,10 @@ $.ajax({
         respon.forEach(data=>{
             $('#grouplist').prepend(`
             <li class="collection-item avatar">
+            <i class="material-icons circle red">chat</i>
             <span class="title">${data.title}</span>
             <p>defaultf language : ${data.language}</p>
-            <a href="/message/${data._id}" class="secondary-content"><i class="material-icons">input</i></a>
+            <a href="/messages/${data._id}" class="secondary-content"><i class="material-icons">input</i></a>
           </li>
             `)
         })
