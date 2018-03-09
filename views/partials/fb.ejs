@@ -23,10 +23,11 @@
             console.log('Successful login for: ' + response.data.fbData.name);
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('userID', response.data.userData._id);
+            localStorage.setItem('userName', response.data.userData.userName);
             // localStorage.setItem('profile_pic_URL', response.data.fbData.picture.data.url);
             // console.log(localStorage.profile_pic_URL);
             // console.log($('#user-welcome').text());
-            $('#user-welcome').text(`Welcome, ${response.data.fbData.name}`)
+            $('#user-welcome').text(`Welcome, ${localStorage.getItem('userName')}`)
           }
         })
         .catch((error) => {
@@ -41,7 +42,7 @@
       $('.fb-logout-button').hide();
       $('#group-menu').hide();
       localStorage.removeItem('token');
-      console.log(localStorage.token);
+      // console.log(localStorage.token);
     }
   }
 
@@ -110,10 +111,11 @@
 
   function logout(){
     FB.logout((response)=>{
-      localStorage.removeItem('token')
+      localStorage.removeItem('token');
       localStorage.removeItem('userID');
-      statusChangeCallback(response)
-      location.reload()
+      localStorage.removeItem('userName');
+      statusChangeCallback(response);
+      location.reload();
     })
   }
 
