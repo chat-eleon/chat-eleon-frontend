@@ -4,5 +4,7 @@
         window.location.href = '/'
     }else{
         $('#user-welcome').text(`Welcome, ${localStorage.getItem('userName')}`)
+        $('.fb-logout-button').show()
+        $('#group-menu').show()
     }
 </script>
