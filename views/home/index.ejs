@@ -13,32 +13,23 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<%- include ./partials/fb %>
 <body>
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center white-text text-lighten-2">Chat-Eleon</h1>
+        <h1 class="header center teal-text text-lighten-2">Chat-Eleon</h1>
         <div class="row center">
-          <h5 class="header center white-text text-lighten-2">Join The New Chat Experience</h5>
+          <h5 class="header col s12 light">Join The New Chat Experience</h5>
         </div>
-    <div class="row-fb">
         <div class="row center">
-          <fb:login-button class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" style="display:block">
-            Login
-          </fb:login-button>
-          <button type="button" name="button" class="fb-logout-button" onclick="logout()" style="display:none">
-            logout
-          </button>
+          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Tombol FB</a>
         </div>
-      </div>
-        
         <br><br>
       </div>
     </div>
-    <div class="parallax"><img src="picture/chameleon6.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="../public/picture/chameleon_2.jpg" alt="Unsplashed background img 1"></div>
   </div>
 
 
@@ -50,7 +41,7 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Auto-translate your chat</h5>
+            <h5 class="center">Auto-Translate Your Chat</h5>
 
             <p class="light">Your chat will be converted into the group language, EVEN if you are using alien language (1st API-Auto Translate)</p>
           </div>
@@ -59,20 +50,22 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">You can search information while chatting</h5>
+            <h5 class="center">User Experience Focused</h5>
 
-            <p class="light">You can search information while accessing group chat(API-2nd Google Search)</p>
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">enjoy new way of chatting</h5>
-            <p class="light">try this new chat now</p>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -83,4 +76,4 @@
 
   </body>
 </html>
-<%- include ./home/footer-home %>
+<%- include ./partials/footer %>
